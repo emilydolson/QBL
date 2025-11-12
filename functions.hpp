@@ -293,8 +293,9 @@ static inline emp::String LineToHTML(emp::String line) {
       }
     }
     if (line.HasSuffix("\\end{figure}")) {
-      line.Slice("\\end{figure}")[0];
+      line = line.Slice("\\end{figure}")[0];
     }
+    line.Trim();
     if (line.HasPrefix("\\begin{tikzpicture}")) {
       out_line += "<script type=\"text/tikz\">\n";
       out_line += line;
