@@ -286,10 +286,25 @@ static inline emp::String LineToHTML(emp::String line) {
   if (line.HasPrefix("=")) {
     // Line is literal HTML
     line.PopFixed(1);
-    out_line += "<latex-js baseURL=\"https://cdn.jsdelivr.net/npm/latex.js/dist/\">\n";
-    out_line += line;
-    out_line += "  </latex-js>\n";
-    return line;
+    if (line.HasPrefix("\\begin{figure}")) {
+      line.PopFixed(13);
+      if (line.hasPrefix("[H]")) {
+        line.PopFixed(3);
+      }
+    }
+    if (line.HasSuffix("\\end{figure}")) {
+      line.Slice("\\end{figure}")[0];
+    }
+    if (line.HasPrefix("\\begin{tikzpicture}")) {
+      out_line += "<script type=\"text/tikz\">\n";
+      out_line += line;
+    } else {
+      out_line += "<latex-js baseURL=\"https://cdn.jsdelivr.net/npm/latex.js/dist/\">\n";
+      out_line += line;
+      out_line += "  </latex-js>\n";      
+    }
+    
+    return out_line;
   }
 
   if (in_codeblock) {
