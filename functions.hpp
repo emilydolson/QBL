@@ -299,6 +299,7 @@ static inline emp::String LineToHTML(emp::String line) {
     if (line.HasPrefix("\\begin{tikzpicture}")) {
       out_line += "<script type=\"text/tikz\">\n";
       out_line += line;
+      out_line += "  </script>\n";
     } else {
       out_line += "<latex-js baseURL=\"https://cdn.jsdelivr.net/npm/latex.js/dist/\">\n";
       out_line += line;
