@@ -152,12 +152,6 @@ static inline emp::String LineToLatex(emp::String line) {
   emp::notify::TestError(line.Has('\n'), "Newline found inside of line: ", line);
   emp::String out_line;
 
-  if (line.HasPrefix("=")) {
-    // Line is literal LaTeX
-    line.PopFixed(1);
-    return line;
-  }
-
   bool in_codeblock = line.HasPrefix("    ");
   bool in_code = in_codeblock;
 
@@ -370,8 +364,17 @@ static inline emp::String TextToD2L(const emp::String & text) {
 // Convert a whole text block to Latex format.
 static inline emp::String TextToLatex(const emp::String & text) {
   emp::vector<emp::String> lines = text.Slice("\n");
-  for (auto & line : lines) line = LineToLatex(line);
-  return emp::Join(lines, "\\\\\n");
+  for (auto & line : lines) {
+    if (line.HasPrefix("=")) {
+      // Line is literal LaTeX
+      line.PopFixed(1);      
+    } else {
+      line = LineToLatex(line);
+      line.Append("\\\\\n");
+    }
+    
+  }
+  return emp::Join(lines, "");
 }
 
 // Convert a whole text block to HTML format.
