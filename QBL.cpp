@@ -282,6 +282,8 @@ public:
     << "    import { LaTeXJSComponent } from \"https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs\"\n"
     << "    customElements.define(\"latex-js\", LaTeXJSComponent)\n"
     << "  </script>\n"
+    << "  <link rel=\"stylesheet\" type=\"text/css\" href=\"https://tikzjax.com/v1/fonts.css\">\n";
+    << "  <script src=\"https://tikzjax.com/v1/tikzjax.js\"></script>\n";
     << "</head>\n"
     << "<body>\n"
     << "\n"
