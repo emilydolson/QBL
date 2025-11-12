@@ -283,6 +283,15 @@ static inline emp::String LineToHTML(emp::String line) {
   char scan_to = '\0';
   bool start_scan = false;
 
+  if (line.HasPrefix("=")) {
+    // Line is literal HTML
+    line.PopFixed(1);
+    out_line += "<latex-js baseURL=\"https://cdn.jsdelivr.net/npm/latex.js/dist/\">\n";
+    out_line += line;
+    out_line += "  </latex-js>\n";
+    return line;
+  }
+
   if (in_codeblock) {
     line.PopFixed(4);
     out_line += "&nbsp;&nbsp;<code>";
