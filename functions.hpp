@@ -287,7 +287,7 @@ static inline emp::String LineToHTML(emp::String line) {
     // Line is literal HTML
     line.PopFixed(1);
     if (line.HasPrefix("\\begin{figure}")) {
-      line.PopFixed(13);
+      line.PopFixed(14);
       if (line.HasPrefix("[H]")) {
         line.PopFixed(3);
       }
