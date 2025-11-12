@@ -154,7 +154,8 @@ static inline emp::String LineToLatex(emp::String line) {
 
   if (line.HasPrefix("=")) {
     // Line is literal LaTeX
-    return line.PopFixed(1);
+    line.Pop("=");
+    return line;
   }
 
   bool in_codeblock = line.HasPrefix("    ");
