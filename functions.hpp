@@ -370,11 +370,13 @@ static inline emp::String TextToLatex(const emp::String & text) {
       line.PopFixed(1);      
     } else {
       line = LineToLatex(line);
-      line.Append("\\\\\n");
+      line.Append("\\\\");
     }
-    
   }
-  return emp::Join(lines, "");
+  // This is a little gross, but we can't just include the \\\\
+  /// in the join because we don't want it on literal latex lines
+  lines.back().RemoveSuffix("\\\\"); // Remove final newline
+  return emp::Join(lines, "\n");
 }
 
 // Convert a whole text block to HTML format.
