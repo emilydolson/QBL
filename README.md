@@ -91,6 +91,7 @@ Specifically, the following line formats are available:
 | `>` (TO IMPLEMENT) | Question should be kept in the same position relative to other Qs.           |
 | `?` (TO IMPLEMENT) | Explanation about the previous line's Q or A (for post-exam learning)        |
 | `{` ... `}` (TO IMPLEMENT) | Mathematical equations for question setup.                           |
+| `=`                | Literal LaTeX line                                                           |
 | `=\|@&~;<,./`      | Not yet specified.                                                           |
 
 The `*` or `[*]` at the beginning of the line can also have the `*` followed by

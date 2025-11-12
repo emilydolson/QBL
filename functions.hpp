@@ -152,6 +152,11 @@ static inline emp::String LineToLatex(emp::String line) {
   emp::notify::TestError(line.Has('\n'), "Newline found inside of line: ", line);
   emp::String out_line;
 
+  if (line.HasPrefix("=")) {
+    // Line is literal LaTeX
+    return line;
+  }
+
   bool in_codeblock = line.HasPrefix("    ");
   bool in_code = in_codeblock;
 

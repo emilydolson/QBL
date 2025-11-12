@@ -54,3 +54,36 @@ Which of the following numbers are even? Check all that apply
 /short_answer
 Write the number 4
 > 4
+
+=\begin{figure}[H]
+=  \begin{tikzpicture}
+=    \draw
+=      (-3.0, 0.0) node[draw=black, shape=circle] (A){A}
+=      (-0.429, -2.571) node[draw=black, shape=circle] (B){B}
+=      (2.143, -1.286) node[draw=black, shape=circle] (C){C}
+=      (2.143, 1.286) node[draw=black, shape=circle] (D){D}
+=      (-0.429, 0.0) node[draw=black, shape=circle] (E){E}
+=      (-0.429, 2.571) node[draw=black, shape=circle] (F){F};
+=    \begin{scope}[-,ultra thick]
+=      \draw (A) to (B);
+=      \draw (A) to (E);
+=      \draw (A) to (F);
+=      \draw (B) to (C);
+=      \draw (B) to (D);
+=      \draw (B) to (E);
+=      \\draw (B) to (F);
+=      \draw (C) to (D);
+=      \draw (D) to (E);
+=      \draw (E) to (F);
+=    \end{scope}
+=  \end{tikzpicture}
+=\end{figure}
+Which of the following nodes in the above graph is an articulation vertex? Check all that apply. 
+:options=5 :correct=1-6
+* A
+* B
+* C
+* D
+* E
+* F
+[*] None of the above
