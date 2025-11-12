@@ -375,8 +375,8 @@ static inline emp::String TextToLatex(const emp::String & text) {
   }
   /// This is a little gross, but we can't just include the backslashes
   /// in the join because we don't want it on literal latex lines
-  emp::String & back_line = lines.back();
-  back_line.erase(back_line.back()-2, back_line.back());
+  emp::String & back_line = lines[lines.size()-1];
+  back_line.TrimBack("\\\\");
   return emp::Join(lines, "\n");
 }
 
