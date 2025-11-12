@@ -375,7 +375,7 @@ static inline emp::String TextToLatex(const emp::String & text) {
   }
   // This is a little gross, but we can't just include the \\\\
   /// in the join because we don't want it on literal latex lines
-  lines.back().RemoveSuffix("\\\\"); // Remove final newline
+  lines.back().erase(lines.back().size()-5, 4); // Remove final newline
   return emp::Join(lines, "\n");
 }
 
